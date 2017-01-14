@@ -36,12 +36,12 @@ To test the example application run the following commands.
 * To setup the h2 database (target/example.tmp.mv.db):
 
         cd application
-        java -jar target/helloworldservice-1.0.0-SNAPSHOT.jar db migrate target/classes/config/dev.yml
+        java -jar ./target/helloworldservice-1.0.0-SNAPSHOT.jar db migrate ./target/classes/config/dev.yml
 
 * To run the server:
 
         cd application
-        java -jar target/helloworldservice-1.0.0-SNAPSHOT.jar server target/classes/config/dev.yml
+        java -jar ./target/helloworldservice-1.0.0-SNAPSHOT.jar server ./target/classes/config/dev.yml
 
 * To hit the Hello World example (hit refresh a few times).
 
