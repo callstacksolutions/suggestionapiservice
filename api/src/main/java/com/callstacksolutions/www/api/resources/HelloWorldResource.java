@@ -1,14 +1,15 @@
 package com.callstacksolutions.www.api.resources;
 
-import com.codahale.metrics.annotation.Timed;
 import com.callstacksolutions.www.domain.Saying;
 import com.callstacksolutions.www.domain.Template;
+import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
 import io.dropwizard.jersey.caching.CacheControl;
 import io.dropwizard.jersey.params.DateTimeParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,13 +21,10 @@ import java.util.concurrent.atomic.AtomicLong;
 public class HelloWorldResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldResource.class);
 
-    private final Template template;
-    private final AtomicLong counter;
+    @Inject
+    private Template template;
 
-    public HelloWorldResource(Template template) {
-        this.template = template;
-        this.counter = new AtomicLong();
-    }
+    private final AtomicLong counter = new AtomicLong();
 
     @GET
     @Timed(name = "get-requests")
