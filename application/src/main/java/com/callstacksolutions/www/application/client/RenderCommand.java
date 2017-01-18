@@ -1,6 +1,6 @@
 package com.callstacksolutions.www.application.client;
 
-import com.callstacksolutions.www.application.SuggestionApiServiceConfiguration;
+import com.callstacksolutions.www.application.configuration.SuggestionApiServiceConfiguration;
 import com.callstacksolutions.www.domain.Template;
 import com.google.common.base.Optional;
 import io.dropwizard.cli.ConfiguredCommand;
@@ -32,7 +32,7 @@ public class RenderCommand extends ConfiguredCommand<SuggestionApiServiceConfigu
     protected void run(Bootstrap<SuggestionApiServiceConfiguration> bootstrap,
                        Namespace namespace,
                        SuggestionApiServiceConfiguration configuration) throws Exception {
-        final Template template = configuration.buildTemplate();
+        final Template template = configuration.getTemplateConfiguration().buildTemplate();
 
         if (namespace.getBoolean("include-default")) {
             LOGGER.info("DEFAULT => {}", template.render(Optional.<String>absent()));

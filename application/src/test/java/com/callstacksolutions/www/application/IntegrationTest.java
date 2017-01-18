@@ -1,5 +1,6 @@
 package com.callstacksolutions.www.application;
 
+import com.callstacksolutions.www.application.configuration.SuggestionApiServiceConfiguration;
 import com.callstacksolutions.www.domain.Person;
 import com.callstacksolutions.www.domain.Saying;
 import com.google.common.base.Optional;
@@ -61,7 +62,11 @@ public class IntegrationTest {
                 .queryParam("name", name.get())
                 .request()
                 .get(Saying.class);
-        assertThat(saying.getContent()).isEqualTo(RULE.getConfiguration().buildTemplate().render(name));
+        assertThat(saying.getContent()).isEqualTo(RULE
+                .getConfiguration()
+                .getTemplateConfiguration()
+                .buildTemplate()
+                .render(name));
     }
 
     @Test

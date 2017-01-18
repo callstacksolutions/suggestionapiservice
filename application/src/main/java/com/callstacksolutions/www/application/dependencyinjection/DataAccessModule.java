@@ -1,4 +1,4 @@
-package com.callstacksolutions.www.crosscutting.dependencyinjection;
+package com.callstacksolutions.www.application.dependencyinjection;
 
 import com.google.inject.AbstractModule;
 

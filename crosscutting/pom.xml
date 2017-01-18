@@ -22,11 +22,6 @@
             <artifactId>domain</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.callstacksolutions.www</groupId>
-            <artifactId>domain</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!--  Guice for Dependency Injection -->
         <dependency>
             <groupId>com.google.inject</groupId>

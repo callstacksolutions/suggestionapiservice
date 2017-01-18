@@ -1,10 +1,11 @@
 package com.callstacksolutions.www.crosscutting.health;
 
+import com.callstacksolutions.www.domain.Template;
 import com.codahale.metrics.health.HealthCheck;
 import com.google.common.base.Optional;
-import com.callstacksolutions.www.domain.Template;
 
 public class TemplateHealthCheck extends HealthCheck {
+
     private final Template template;
 
     public TemplateHealthCheck(Template template) {
