@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.callstacksolutions.www</groupId>
             <artifactId>domain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
