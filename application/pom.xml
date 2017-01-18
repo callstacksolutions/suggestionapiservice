@@ -12,26 +12,31 @@
 
     <artifactId>application</artifactId>
 
+    <properties>
+        <com.h2database.version>1.4.193</com.h2database.version>
+        <hubspot.dropwizard.guice.version>1.0.0.2</hubspot.dropwizard.guice.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.callstacksolutions.www</groupId>
             <artifactId>domain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.callstacksolutions.www</groupId>
             <artifactId>api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.callstacksolutions.www</groupId>
             <artifactId>dataaccess</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.callstacksolutions.www</groupId>
             <artifactId>crosscutting</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>
@@ -48,6 +53,23 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>${com.h2database.version}</version>
+        </dependency>
+        <!-- Integrate Guice with Dropwizard -->
+        <dependency>
+            <groupId>com.hubspot.dropwizard</groupId>
+            <artifactId>dropwizard-guice</artifactId>
+            <version>${hubspot.dropwizard.guice.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.code.findbugs</groupId>
+                    <artifactId>annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish.hk2</groupId>
+                    <artifactId>hk2-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
