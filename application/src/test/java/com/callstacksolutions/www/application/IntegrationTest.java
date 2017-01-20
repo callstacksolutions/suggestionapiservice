@@ -1,7 +1,7 @@
 package com.callstacksolutions.www.application;
 
 import com.callstacksolutions.www.application.configuration.SuggestionApiServiceConfiguration;
-import com.callstacksolutions.www.domain.Person;
+import com.callstacksolutions.www.dataaccess.person.PersonEntity;
 import com.callstacksolutions.www.domain.Saying;
 import com.google.common.base.Optional;
 import io.dropwizard.testing.ConfigOverride;
@@ -71,28 +71,28 @@ public class IntegrationTest {
 
     @Test
     public void testPostPerson() throws Exception {
-        final Person person = new Person("Dr. IntegrationTest", "Chief Wizard");
-        final Person newPerson = client.target("http://localhost:" + RULE.getLocalPort() + "/people")
+        final PersonEntity personEntity = new PersonEntity("Dr. IntegrationTest", "Chief Wizard");
+        final PersonEntity newPersonEntity = client.target("http://localhost:" + RULE.getLocalPort() + "/people")
                 .request()
-                .post(Entity.entity(person, MediaType.APPLICATION_JSON_TYPE))
-                .readEntity(Person.class);
-        assertThat(newPerson.getId()).isNotNull();
-        assertThat(newPerson.getFullName()).isEqualTo(person.getFullName());
-        assertThat(newPerson.getJobTitle()).isEqualTo(person.getJobTitle());
+                .post(Entity.entity(personEntity, MediaType.APPLICATION_JSON_TYPE))
+                .readEntity(PersonEntity.class);
+        assertThat(newPersonEntity.getId()).isNotNull();
+        assertThat(newPersonEntity.getFullName()).isEqualTo(personEntity.getFullName());
+        assertThat(newPersonEntity.getJobTitle()).isEqualTo(personEntity.getJobTitle());
     }
 
 
     @Test
     public void testListPeople() throws Exception {
-        final List<Person> people = client.target("http://localhost:" + RULE.getLocalPort() + "/people")
+        final List<PersonEntity> people = client.target("http://localhost:" + RULE.getLocalPort() + "/people")
                 .request()
                 .get()
-                .readEntity(new GenericType<List<Person>>() {});
+                .readEntity(new GenericType<List<PersonEntity>>() {});
 
-        for (Person person : people) {
-            assertThat(person.getId()).isNotNull();
-            assertThat(person.getFullName()).isEqualTo(person.getFullName());
-            assertThat(person.getJobTitle()).isEqualTo(person.getJobTitle());
+        for (PersonEntity personEntity : people) {
+            assertThat(personEntity.getId()).isNotNull();
+            assertThat(personEntity.getFullName()).isEqualTo(personEntity.getFullName());
+            assertThat(personEntity.getJobTitle()).isEqualTo(personEntity.getJobTitle());
         }
     }
 }

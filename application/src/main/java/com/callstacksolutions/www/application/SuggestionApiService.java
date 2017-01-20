@@ -3,12 +3,19 @@ package com.callstacksolutions.www.application;
 import com.callstacksolutions.www.api.auth.ExampleAuthenticator;
 import com.callstacksolutions.www.api.auth.ExampleAuthorizer;
 import com.callstacksolutions.www.api.filters.DateRequiredFeature;
-import com.callstacksolutions.www.api.resources.*;
+import com.callstacksolutions.www.api.person.PersonResource;
+import com.callstacksolutions.www.api.resources.FilteredResource;
+import com.callstacksolutions.www.api.resources.HelloWorldResource;
+import com.callstacksolutions.www.api.resources.ProtectedResource;
+import com.callstacksolutions.www.api.resources.ViewResource;
 import com.callstacksolutions.www.application.client.RenderCommand;
 import com.callstacksolutions.www.application.configuration.SuggestionApiServiceConfiguration;
-import com.callstacksolutions.www.application.dependencyinjection.*;
+import com.callstacksolutions.www.application.dependencyinjection.ApiModule;
+import com.callstacksolutions.www.application.dependencyinjection.ApplicationModule;
+import com.callstacksolutions.www.application.dependencyinjection.CrossCuttingModule;
+import com.callstacksolutions.www.application.dependencyinjection.DataAccessModule;
+import com.callstacksolutions.www.application.dependencyinjection.DomainModule;
 import com.callstacksolutions.www.crosscutting.health.TemplateHealthCheck;
-import com.callstacksolutions.www.dataaccess.PersonDAO;
 import com.callstacksolutions.www.domain.Template;
 import com.callstacksolutions.www.domain.User;
 import com.google.inject.Stage;
@@ -123,14 +130,11 @@ public class SuggestionApiService extends Application<SuggestionApiServiceConfig
     }
 
     private void registerResources(SuggestionApiServiceConfiguration configuration, Environment environment) {
-        environment.jersey().register(new HelloWorldResource());
-        environment.jersey().register(new ViewResource());
-        environment.jersey().register(new ProtectedResource());
-        environment.jersey().register(new FilteredResource());
-
-        final PersonDAO dao = new PersonDAO(hibernateBundle.getSessionFactory());
-        environment.jersey().register(new PeopleResource(dao));
-        environment.jersey().register(new PersonResource(dao));
+        environment.jersey().register(guiceBundle.getInjector().getInstance(HelloWorldResource.class));
+        environment.jersey().register(guiceBundle.getInjector().getInstance(ViewResource.class));
+        environment.jersey().register(guiceBundle.getInjector().getInstance(ProtectedResource.class));
+        environment.jersey().register(guiceBundle.getInjector().getInstance(FilteredResource.class));
+        environment.jersey().register(guiceBundle.getInjector().getInstance(PersonResource.class));
     }
 
 }
