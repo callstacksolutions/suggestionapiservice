@@ -2,7 +2,7 @@ package com.callstacksolutions.www.application.dependencyinjection;
 
 import com.callstacksolutions.www.application.configuration.SuggestionApiServiceConfiguration;
 import com.callstacksolutions.www.application.configuration.TemplateConfiguration;
-import com.callstacksolutions.www.domain.Person;
+import com.callstacksolutions.www.dataaccess.person.PersonEntity;
 import com.callstacksolutions.www.domain.Template;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -35,7 +35,7 @@ public class ApplicationModule extends AbstractModule {
     @Singleton
     private HibernateBundle providesHibernateBundle() {
         HibernateBundle hibernateBundle =
-                new HibernateBundle<SuggestionApiServiceConfiguration>(Person.class) {
+                new HibernateBundle<SuggestionApiServiceConfiguration>(PersonEntity.class) {
 
             @Override
             public DataSourceFactory getDataSourceFactory(SuggestionApiServiceConfiguration configuration) {

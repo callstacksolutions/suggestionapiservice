@@ -1,4 +1,4 @@
-package com.callstacksolutions.www.domain;
+package com.callstacksolutions.www.dataaccess.person;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +14,11 @@ import java.util.Objects;
 @Table(name = "people")
 @NamedQueries({
         @NamedQuery(
-                name = "Person.findAll",
-                query = "SELECT p FROM Person p"
+                name = "PersonEntity.findAll",
+                query = "SELECT p FROM PersonEntity p"
         )
 })
-public class Person {
+public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -29,10 +29,10 @@ public class Person {
     @Column(name = "jobTitle", nullable = false)
     private String jobTitle;
 
-    public Person() {
+    public PersonEntity() {
     }
 
-    public Person(String fullName, String jobTitle) {
+    public PersonEntity(String fullName, String jobTitle) {
         this.fullName = fullName;
         this.jobTitle = jobTitle;
     }
@@ -66,11 +66,11 @@ public class Person {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Person)) {
+        if (!(o instanceof PersonEntity)) {
             return false;
         }
 
-        final Person that = (Person) o;
+        final PersonEntity that = (PersonEntity) o;
 
         return Objects.equals(this.id, that.id) &&
                 Objects.equals(this.fullName, that.fullName) &&
