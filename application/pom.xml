@@ -14,7 +14,7 @@
 
     <properties>
         <com.h2database.version>1.4.193</com.h2database.version>
-        <hubspot.dropwizard.guice.version>1.0.0.2</hubspot.dropwizard.guice.version>
+        <hubspot.dropwizard.guice.version>1.0.6.0</hubspot.dropwizard.guice.version>
     </properties>
 
     <dependencies>

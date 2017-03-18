@@ -13,7 +13,8 @@
     <artifactId>crosscutting</artifactId>
 
     <properties>
-        <google.guice.version>4.1.0</google.guice.version>
+        <!-- This has to be 4.0 to ensure compatibility with Dropwizard Guice version -->
+        <google.guice.version>4.0</google.guice.version>
     </properties>
 
     <dependencies>
