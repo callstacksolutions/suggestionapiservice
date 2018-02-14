@@ -11,9 +11,9 @@ Dropwizard.
 
 This database example is comprised of the following classes:
 
-* The `PersonDAO` illustrates using the Data Access Object pattern with assisting of Hibernate.
+* The `PersonDAO` illustrates using the Data Access Object pattern with this assistance of Hibernate.
 
-* The `Person` illustrates mapping of Java classes to database tables with assisting of JPA annotations.
+* The `Person` illustrates mapping of Java classes to database tables with the assistance of JPA annotations.
 
 * All the JPQL statements for use in the `PersonDAO` are located in the `Person` class.
 
